@@ -9,6 +9,9 @@ phases:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
       - echo Prepare JST locale
+      - apt-get install build-essential
+      - apt-get install openjdk-8-jdk
+      - update-alternatives --config java
       - apt-get install -y tzdata
       - ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
       - export TAG=`date "+%Y%m%d-%H%M"`
